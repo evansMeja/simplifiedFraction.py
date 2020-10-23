@@ -1,0 +1,21 @@
+class Solution:
+    def simplify(self,numerator,denominator):
+        numerator = numerator
+        denominator = denominator
+        for i in range(2,10):
+            if i >= numerator:
+                break
+            while (numerator % i == 0) and (denominator % i == 0):
+                numerator = numerator / i
+                denominator = denominator / i
+        big_str=str(int(numerator))+"/"+str(int(denominator))
+        return big_str
+        
+    def simplifiedFractions(self, n: int) -> List[str]:
+        simplified=[]
+        for denominator in range(2,n+1):
+            for numerator in range(1,denominator):
+                y = self.simplify(numerator,denominator)
+                if y not in simplified:
+                    simplified.append(y)
+        return simplified
